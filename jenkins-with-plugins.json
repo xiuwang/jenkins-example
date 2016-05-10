@@ -25,14 +25,9 @@
       "value": "password"
     },
     {
-      "name": "JENKINS_IMAGE",
-      "description": "Jenkins Docker image to use",
-      "value": "ci.dev.openshift.redhat.com:5000/openshift/jenkins-1-rhel7:latest"
-    },
-    {
       "name": "JENKINS_S2I_REPO_URL",
       "description": "The repository to use to build the Jenkins master",
-      "value": "https://github.com/xiuwang/jenkins-example.git"
+      "value": "https://github.com/openshift-qe/jenkins-example.git"
     },
     {
       "name": "JENKINS_S2I_REPO_CONTEXTDIR",
@@ -142,8 +137,9 @@
           "type": "Source",
           "sourceStrategy": {
             "from": {
-              "kind": "DockerImage",
-              "name": "${JENKINS_IMAGE}"
+              "kind": "ImageStreamTag",
+              "name": "jenkins:latest",
+              "namespace": "openshift"
             }
           }
         },
